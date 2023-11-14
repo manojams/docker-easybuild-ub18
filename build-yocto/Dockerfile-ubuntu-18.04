@@ -44,7 +44,9 @@ ENV QT_X11_NO_MITSHM 1
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
  
-ENV HOME /home/ub
-ENV USER ub
-USER ub
-#WORKDIR /home/ub
+RUN useradd -ms /bin/bash build
+RUN usermod -aG sudo build
+RUN echo "build ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/build
+
+USER build
+WORKDIR /home/build
