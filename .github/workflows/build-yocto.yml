@@ -22,7 +22,7 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Build and Push Docker Image
+    - name: Build and Push the Docker Image
       run: |
           docker build -t docker.pkg.github.com/${{ github.repository }}/build-yocto-ubuntu:18.04 -f build-yocto/Dockerfile-ubuntu-18.04 .
           docker push docker.pkg.github.com/${{ github.repository }}/build-yocto-ubuntu:18.04
